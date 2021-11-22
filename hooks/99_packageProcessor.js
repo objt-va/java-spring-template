@@ -15,9 +15,7 @@ module.exports = {
 
         if (javaPackage !== 'com/asyncapi') {
             const tmpSrc = tmp.dirSync();
-            const tmpTest = tmp.dirSync();
             fs.copySync(sourcePath + 'com/asyncapi', tmpSrc.name);
-            fs.removeSync(sourcePath + 'com');
             fs.copySync(tmpSrc.name, sourcePath + javaPackage);
             tmp.setGracefulCleanup();
         }
