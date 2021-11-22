@@ -9,7 +9,6 @@ module.exports = {
      */
     'generate:after': generator => {
         const sourcePath = generator.targetDir + '/src/main/java/';
-        const testPath = generator.targetDir + '/src/test/java/';
         let javaPackage = generator.templateParams['userJavaPackage'];
 
         javaPackage = javaPackage.replace(/\./g, '/');
@@ -18,11 +17,8 @@ module.exports = {
             const tmpSrc = tmp.dirSync();
             const tmpTest = tmp.dirSync();
             fs.copySync(sourcePath + 'com/asyncapi', tmpSrc.name);
-            fs.copySync(testPath + 'com/asyncapi', tmpTest.name);
             fs.removeSync(sourcePath + 'com');
-            fs.removeSync(testPath + 'com');
             fs.copySync(tmpSrc.name, sourcePath + javaPackage);
-            fs.copySync(tmpTest.name, testPath + javaPackage);
             tmp.setGracefulCleanup();
         }
     },
