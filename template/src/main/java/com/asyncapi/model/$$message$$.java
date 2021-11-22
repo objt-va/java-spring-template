@@ -1,4 +1,4 @@
-package {{ params['userJavaPackage'] }}.model;
+package {{ params['userJavaPackage'] }}.dto;
 
 import javax.validation.Valid;
 
